@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "@wordpress/eslint-plugin": "^13.6.0",
+    "@wordpress/prettier-config": "^2.5.0",
+    "eslint-config-prettier": "^8.5.0"
+  }
+}
