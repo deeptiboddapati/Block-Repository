@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "toms/hero-a",
+	"version": "0.1.0",
+	"title": "Hero A",
+	"category": "design",
+	"icon": "cover-image",
+	"description": "Hero Image, Headline, Supporting Copy, Conversion button, places to buy.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "hero-a",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
