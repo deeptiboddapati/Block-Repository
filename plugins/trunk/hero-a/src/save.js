@@ -17,8 +17,13 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 export default function save() {
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Hero A – hello from the saved content!' }
-		</p>
+		<div {...useBlockProps.save()} className='toms-hero-a'>
+			<h1 className='toms-hero-a-headline'>Welcome to the total management of your economy.</h1>
+			<img className='toms-hero-a-heroimage' src='https://via.placeholder.com/344X665' />
+			<p className='toms-hero-a-supportingcopy'>Meet the new online banking. Access to your personalized digital card and pay for your day-to-day purchases with total flexibility.</p>
+			<button className='toms-hero-a-ctabutton'>Start Now</button>
+			<img className='toms-hero-a-marketplaceimageone' src='https://via.placeholder.com/116X32' />
+			<img className='toms-hero-a-marketplaceimagetwo' src='https://via.placeholder.com/116X32' />
+		</div>
 	);
 }
