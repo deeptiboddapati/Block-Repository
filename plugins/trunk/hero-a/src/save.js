@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -15,12 +15,21 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save() {
+export default function save({ attributes }) {
+	const { headline, heroimage, heroimagealt, supportingcopy } = attributes;
 	return (
 		<div {...useBlockProps.save()} className='toms-hero-a'>
-			<h1 className='toms-hero-a-headline'>Welcome to the total management of your economy.</h1>
-			<img className='toms-hero-a-heroimage' src='https://via.placeholder.com/344X665' />
-			<p className='toms-hero-a-supportingcopy'>Meet the new online banking. Access to your personalized digital card and pay for your day-to-day purchases with total flexibility.</p>
+			<RichText.Content
+				className="toms-hero-a-headline"
+				tagName='h1'
+				value={headline}
+			/>
+			{heroimage && <img className='toms-hero-a-heroimage' src={heroimage} alt={heroimagealt} />}
+			<RichText.Content
+				className="toms-hero-a-supportingcopy"
+				tagName='p'
+				value={supportingcopy}
+			/>
 			<button className='toms-hero-a-ctabutton'>Start Now</button>
 			<img className='toms-hero-a-marketplaceimageone' src='https://via.placeholder.com/116X32' />
 			<img className='toms-hero-a-marketplaceimagetwo' src='https://via.placeholder.com/116X32' />

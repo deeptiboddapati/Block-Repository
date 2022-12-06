@@ -4,15 +4,22 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
 import { __ } from '@wordpress/i18n';
-
+import { useEffect, useState } from '@wordpress/element';
+import { isBlobURL, revokeBlobURL } from '@wordpress/blob';
+import { Spinner, withNotices, ToolbarButton } from '@wordpress/components';
 /**
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
-
+import {
+	useBlockProps,
+	RichText,
+	MediaPlaceholder,
+	BlockControls,
+	MediaReplaceFlow
+} from '@wordpress/block-editor';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -29,17 +36,106 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
-
-	console.log(useBlockProps())
+function Edit({ attributes, setAttributes, noticeOperations, noticeUI }) {
+	const { headline, supportingcopy, heroimage, heroimagealt, heroimageid, marketplaceimageone, marketplaceimagetwo } = attributes;
+	const [blobURL, setBlobURL] = useState();
+	const onSelectHeroImage = (image) => {
+		if (!image || !image.url) {
+			setAttributes({ heroimage: undefined, heroimageid: undefined, heroimagealt: '' })
+			return;
+		}
+		noticeOperations.removeAllNotices();
+		setAttributes({ heroimage: image.url, heroimageid: image.id, heroimagealt: image.alt })
+	}
+	const onUploadError = (err) => {
+		noticeOperations.removeAllNotices();
+		noticeOperations.createErrorNotice(err);
+	}
+	useEffect(() => {
+		if (!heroimageid && isBlobURL(heroimage)) {
+			setAttributes({
+				heroimage: undefined,
+				heroimagealt: undefined
+			})
+		}
+	})
+	useEffect(() => {
+		if (isBlobURL(heroimage)) {
+			setBlobURL(heroimage)
+		} else {
+			revokeBlobURL(blobURL);
+			setBlobURL();
+		}
+	}, [heroimage])
+	const removeHeroImage = () => {
+		setAttributes({
+			heroimage: undefined,
+			heroimagealt: undefined,
+			heroimageid: undefined
+		})
+	}
 	return (
-		<div {...useBlockProps()} className='toms-hero-a'>
-			<h1 className='toms-hero-a-headline'>Welcome to the total management of your economy.</h1>
-			<img className='toms-hero-a-heroimage' src='https://via.placeholder.com/344X665' />
-			<p className='toms-hero-a-supportingcopy'>Meet the new online banking. Access to your personalized digital card and pay for your day-to-day purchases with total flexibility.</p>
-			<button className='toms-hero-a-ctabutton'>Start Now</button>
-			<img className='toms-hero-a-marketplaceimageone' src='https://via.placeholder.com/116X32' />
-			<img className='toms-hero-a-marketplaceimagetwo' src='https://via.placeholder.com/116X32' />
-		</div>
+		<>
+			<BlockControls>
+				{heroimage &&
+					<>
+						<MediaReplaceFlow
+							icon="admin-page"
+							onSelect={(val) => onSelectHeroImage(val)}
+							onError={(err) => onUploadError(err)}
+							accept="image/*"
+							allowedTypes={['image']}
+							name='Replace Hero Image'
+							mediaId={heroimageid}
+							mediaUrl={heroimage}
+						/>
+						<ToolbarButton onClick={removeHeroImage}>
+							Remove Hero Image
+						</ToolbarButton>
+					</>
+				}
+			</BlockControls>
+			<div {...useBlockProps()} className='toms-hero-a'>
+				<RichText
+					className="toms-hero-a-headline"
+					tagName="h1" // The tag here is the element output and editable in the admin
+					value={headline} // Any existing content, either from the database or an attribute default
+					allowedFormats={['core/bold', 'core/italic']} // Allow the content to be made bold or italic, but do not allow other formatting options
+					onChange={(content) => setAttributes({ headline: content })} // Store updated content as a block attribute
+					placeholder={__('Headline...')} // Display this text before any content has been added by the user
+				/>
+				<>
+					{heroimage ?
+						(
+							isBlobURL(heroimage) ?
+								<div className="isBlobURL" ><img className={'toms-hero-a-heroimage'} src={heroimage} alt={heroimagealt} /> {console.log('hi')}<Spinner /></div> :
+								<img className={'toms-hero-a-heroimage'} src={heroimage} alt={heroimagealt} />
+						)
+						:
+						<MediaPlaceholder
+							icon="admin-page"
+							onSelect={(val) => onSelectHeroImage(val)}
+							onError={(err) => onUploadError(err)}
+							accept="image/*"
+							allowedTypes={['image']}
+							notices={noticeUI}
+						/>
+					}
+				</>
+				<RichText
+					className="toms-hero-a-supportingcopy"
+					tagName="p" // The tag here is the element output and editable in the admin
+					value={supportingcopy} // Any existing content, either from the database or an attribute default
+					allowedFormats={['core/bold', 'core/italic']} // Allow the content to be made bold or italic, but do not allow other formatting options
+					onChange={(content) => setAttributes({ supportingcopy: content })} // Store updated content as a block attribute
+					placeholder={__('Supporting Copy...')} // Display this text before any content has been added by the user
+				/>
+				<button className='toms-hero-a-ctabutton'>Start Now</button>
+				<img className='toms-hero-a-marketplaceimageone' src='https://via.placeholder.com/116X32' />
+				<img className='toms-hero-a-marketplaceimagetwo' src='https://via.placeholder.com/116X32' />
+			</div>
+		</>
 	);
 }
+
+export default withNotices(Edit)

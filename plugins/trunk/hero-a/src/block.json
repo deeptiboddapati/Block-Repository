@@ -10,6 +10,60 @@
 	"supports": {
 		"html": false
 	},
+	"attributes": {
+		"headline": {
+			"type": "string",
+			"source": "text",
+			"selector": ".toms-hero-a-headline"
+		},
+		"supportingcopy": {
+			"type": "string",
+			"source": "text",
+			"selector": ".toms-hero-a-supportingcopy"
+		},
+		"heroimage": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".toms-hero-a-heroimage",
+			"attribute": "src"
+		},
+		"heroimagealt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".toms-hero-a-heroimage",
+			"attribute": "alt",
+			"default": ""
+		},
+		"heroimageid": {
+			"type": "number"
+		},
+		"marketplaceimageone": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".toms-hero-a-marketplaceimageone",
+			"attribute": "src"
+		},
+		"marketplaceimageonealt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".toms-hero-a-marketplaceimageone",
+			"attribute": "alt",
+			"default": ""
+		},
+		"marketplaceimagetwo": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".toms-hero-a-marketplaceimagetwo",
+			"attribute": "src"
+		},
+		"marketplaceimagetwoalt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".toms-hero-a-marketplaceimagetwo",
+			"attribute": "alt",
+			"default": ""
+		}
+	},
 	"textdomain": "hero-a",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
