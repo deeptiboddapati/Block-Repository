@@ -6,7 +6,13 @@
 import { __ } from '@wordpress/i18n';
 import { useEffect, useState } from '@wordpress/element';
 import { isBlobURL, revokeBlobURL } from '@wordpress/blob';
-import { Spinner, withNotices, ToolbarButton } from '@wordpress/components';
+import {
+	Spinner,
+	withNotices,
+	ToolbarButton,
+	PanelBody,
+	TextareaControl
+} from '@wordpress/components';
 /**
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
@@ -18,7 +24,8 @@ import {
 	RichText,
 	MediaPlaceholder,
 	BlockControls,
-	MediaReplaceFlow
+	MediaReplaceFlow,
+	InspectorControls
 } from '@wordpress/block-editor';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -74,8 +81,21 @@ function Edit({ attributes, setAttributes, noticeOperations, noticeUI }) {
 			heroimageid: undefined
 		})
 	}
+	const onChangeAlt = (newAltText) => {
+		setAttributes({ heroimagealt: newAltText })
+	}
 	return (
 		<>
+			<InspectorControls>
+				<PanelBody title={__('Image Settings', 'textdomain')}>
+					<TextareaControl
+						label={__('Alt Text', 'textdomain')}
+						value={heroimagealt}
+						onChange={onChangeAlt}
+						help={__('alt text is helpful for...', 'textdomain')}
+					/>
+				</PanelBody>
+			</InspectorControls>
 			<BlockControls>
 				{heroimage &&
 					<>
