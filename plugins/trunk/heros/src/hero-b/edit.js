@@ -115,9 +115,9 @@ function Edit({ attributes, setAttributes, noticeOperations, noticeUI }) {
 					</>
 				}
 			</BlockControls>
-			<div {...useBlockProps()} className='toms-hero-a'>
+			<div {...useBlockProps()} className='toms-hero-b'>
 				<RichText
-					className="toms-hero-a-headline"
+					className="toms-hero-b-headline"
 					tagName="h1" // The tag here is the element output and editable in the admin
 					value={headline} // Any existing content, either from the database or an attribute default
 					allowedFormats={['core/bold', 'core/italic']} // Allow the content to be made bold or italic, but do not allow other formatting options
@@ -128,8 +128,8 @@ function Edit({ attributes, setAttributes, noticeOperations, noticeUI }) {
 					{heroimage ?
 						(
 							isBlobURL(heroimage) ?
-								<div className="isBlobURL" ><img className={'toms-hero-a-heroimage'} src={heroimage} alt={heroimagealt} /> {console.log('hi')}<Spinner /></div> :
-								<img className={'toms-hero-a-heroimage'} src={heroimage} alt={heroimagealt} />
+								<div className="isBlobURL" ><img className={'toms-hero-b-heroimage'} src={heroimage} alt={heroimagealt} /> {console.log('hi')}<Spinner /></div> :
+								<img className={'toms-hero-b-heroimage'} src={heroimage} alt={heroimagealt} />
 						)
 						:
 						<MediaPlaceholder
@@ -143,16 +143,14 @@ function Edit({ attributes, setAttributes, noticeOperations, noticeUI }) {
 					}
 				</>
 				<RichText
-					className="toms-hero-a-supportingcopy"
+					className="toms-hero-b-supportingcopy"
 					tagName="p" // The tag here is the element output and editable in the admin
 					value={supportingcopy} // Any existing content, either from the database or an attribute default
 					allowedFormats={['core/bold', 'core/italic']} // Allow the content to be made bold or italic, but do not allow other formatting options
 					onChange={(content) => setAttributes({ supportingcopy: content })} // Store updated content as a block attribute
 					placeholder={__('Supporting Copy...')} // Display this text before any content has been added by the user
 				/>
-				<button className='toms-hero-a-ctabutton'>Start Now</button>
-				<img className='toms-hero-a-marketplaceimageone' src='https://via.placeholder.com/116X32' />
-				<img className='toms-hero-a-marketplaceimagetwo' src='https://via.placeholder.com/116X32' />
+				<button className='toms-hero-b-ctabutton'>Start Now</button>
 			</div>
 		</>
 	);

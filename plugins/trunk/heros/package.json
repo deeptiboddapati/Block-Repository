@@ -20,6 +20,7 @@
 	},
 	"dependencies": {
 		"@wordpress/blob": "^3.22.0",
-		"@wordpress/element": "^4.20.0"
+		"@wordpress/element": "^4.20.0",
+		"dompurify": "^2.4.1"
 	}
 }

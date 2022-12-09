@@ -1,0 +1,128 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+ .toms-hero-b {
+	display:grid;
+	grid-template-columns: 100%;
+	grid-template-rows:auto;
+	grid-template-areas:
+	"heroimage"
+	"headline"
+	"supportingcopy"
+	"ctabutton"
+	"marketplaceone"
+	"marketplacetwo";
+	justify-items: center;
+	text-align:center;
+	width:288px;
+	align-items: end;
+	@media screen and (min-width: 768px) {
+		column-gap:40px;
+		grid-template-columns: 108px 252px ;
+		grid-template-rows: 281px 120px 96px 157px;
+		// grid-template-rows:auto;
+		grid-template-areas:
+		"headline headline heroImage"
+		"supportingcopy supportingcopy heroImage"
+		"ctabutton ctabutton heroImage"
+		"marketplaceone marketplacetwo heroimage";
+		text-align:left;
+		width:711px;
+		justify-items: start;
+	}
+	@media screen and (min-width: 1360px) {
+		grid-template-columns: 116px 116px 116px 40px 344px;
+		grid-template-rows:314px 96px 96px 148px;
+		// grid-template-rows:auto;
+		grid-template-areas:
+		"headline headline headline space heroImage"
+		"supportingcopy supportingcopy supportingcopy space heroImage"
+		"ctabutton ctabutton ctabutton space heroImage"
+		"marketplaceone marketplacetwo empty space  heroimage";
+		;
+		width:928px;
+		margin: 0 auto;
+		
+	}
+	&-headline{
+		grid-area:headline;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 22px;
+		line-height: 28px;
+		letter-spacing: 0.003em;
+		@media screen and (min-width: 768px) {
+			font-size: 28px;
+			line-height: 36px;
+			letter-spacing: 0.4px;
+			align-self: end;
+			margin-bottom:48px;
+			width: 320px;
+		}
+		@media screen and (min-width: 1360px){
+			font-size: 40px;
+			line-height: 50px;
+			letter-spacing: 0.005em;
+			width: 464px;
+		}
+	}
+	&-heroimage{
+		grid-area:heroimage;
+		width:125px;
+		@media screen and (min-width: 768px) {
+			grid-row-start:1;
+			grid-row-end:5;
+			width:344px;
+			justify-self:end;
+		}
+	}
+	&-supportingcopy{
+		grid-area:supportingcopy;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 300;
+		font-size: 15px;
+		line-height: 24px;
+		@media screen and (min-width: 768px) {
+			align-self: end;
+			margin-top: 0;
+			margin-bottom:48px;
+			width: 305px;
+			justify-self: start;
+		}
+		@media screen and (min-width:1360px) {
+			width:444px;
+		}
+
+
+	}
+	&-ctabutton{
+		grid-area:ctabutton;
+		height:48px;
+		width: 216px;
+		@media screen and (min-width: 768px) {
+			justify-self: start;
+			align-self: end;
+			margin-bottom:48px;
+		}
+	}
+	&-marketplaceimageone{
+		grid-area:marketplaceone;
+		@media screen and (min-width: 768px) {
+			align-self: start;
+			width: 116px;
+		}
+	}
+	&-marketplaceimagetwo{
+		grid-area:marketplacetwo;
+		@media screen and (min-width: 768px) {
+			align-self: start;
+			width: 116px;
+		}
+	}
+}

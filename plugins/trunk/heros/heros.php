@@ -1,15 +1,15 @@
 <?php
 /**
- * Plugin Name:       Hero A
+ * Plugin Name:       Heros
  * Plugin URI:        www.totalonlinemarketingsystem.com
- * Description:       Hero Image, Headline, Supporting Copy, Conversion button, places to buy.
+ * Description:       A Plugin Containing all the Hero blocks used on this site.
  * Requires at least: 6.1
  * Requires PHP:      7.0
  * Version:           0.1.0
  * Author:            Deepti Boddapati
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       hero-a
+ * Text Domain:       toms
  *
  * @package           toms
  */
@@ -21,7 +21,9 @@
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
-function toms_hero_a_block_init() {
-	register_block_type( __DIR__ . '/build' );
+function toms_heros_init() {
+	register_block_type( __DIR__ .'/build/hero-a' );
+	register_block_type( __DIR__ .'/build/hero-b' );
+
 }
-add_action( 'init', 'toms_hero_a_block_init' );
+add_action( 'init', 'toms_heros_init' );

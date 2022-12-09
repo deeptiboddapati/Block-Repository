@@ -13,12 +13,12 @@
 	"attributes": {
 		"headline": {
 			"type": "string",
-			"source": "text",
+			"source": "html",
 			"selector": ".toms-hero-a-headline"
 		},
 		"supportingcopy": {
 			"type": "string",
-			"source": "text",
+			"source": "html",
 			"selector": ".toms-hero-a-supportingcopy"
 		},
 		"heroimage": {
@@ -50,6 +50,9 @@
 			"attribute": "alt",
 			"default": ""
 		},
+		"marketplaceimageoneid": {
+			"type": "number"
+		},
 		"marketplaceimagetwo": {
 			"type": "string",
 			"source": "attribute",
@@ -62,6 +65,9 @@
 			"selector": ".toms-hero-a-marketplaceimagetwo",
 			"attribute": "alt",
 			"default": ""
+		},
+		"marketplaceimagetwoid": {
+			"type": "number"
 		}
 	},
 	"textdomain": "hero-a",

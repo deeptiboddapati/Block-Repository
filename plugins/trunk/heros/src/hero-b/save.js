@@ -5,7 +5,7 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps, RichText } from '@wordpress/block-editor';
-
+import DOMPurify from 'dompurify';
 /**
  * The save function defines the way in which the different attributes should
  * be combined into the final markup, which is then serialized by the block
@@ -18,21 +18,11 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
 export default function save({ attributes }) {
 	const { headline, heroimage, heroimagealt, supportingcopy } = attributes;
 	return (
-		<div {...useBlockProps.save()} className='toms-hero-a'>
-			<RichText.Content
-				className="toms-hero-a-headline"
-				tagName='h1'
-				value={headline}
-			/>
-			{heroimage && <img className='toms-hero-a-heroimage' src={heroimage} alt={heroimagealt} />}
-			<RichText.Content
-				className="toms-hero-a-supportingcopy"
-				tagName='p'
-				value={supportingcopy}
-			/>
-			<button className='toms-hero-a-ctabutton'>Start Now</button>
-			<img className='toms-hero-a-marketplaceimageone' src='https://via.placeholder.com/116X32' />
-			<img className='toms-hero-a-marketplaceimagetwo' src='https://via.placeholder.com/116X32' />
+		<div {...useBlockProps.save()} className='toms-hero-b'>
+			<h1 className="toms-hero-b-headline"></h1>
+			{heroimage && <img className='toms-hero-b-heroimage' src={heroimage} alt={heroimagealt} />}
+			<p className="toms-hero-b-supportingcopy">{supportingcopy}</p>
+			<button className='toms-hero-b-ctabutton'>Start Now</button>
 		</div>
 	);
 }
