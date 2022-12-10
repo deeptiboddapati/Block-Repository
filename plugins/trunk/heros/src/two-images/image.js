@@ -1,7 +1,7 @@
 import { MediaPlaceholder } from '@wordpress/block-editor';
 import { useState } from '@wordpress/element';
 
-export default function ImageControls(props) {
+export const ImageControls = (props) => {
     const {
         className,
         src,
@@ -55,5 +55,6 @@ export default function ImageControls(props) {
                 />
             }
         </>
+
     );
 }

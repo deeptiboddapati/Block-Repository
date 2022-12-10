@@ -43,43 +43,26 @@ export default function Edit({ attributes, setAttributes }) {
 		/>)
 	return (
 		<div {...useBlockProps()}>
-
-			{
-				secondImageId ?
-					<div>
-						<img src={secondImageUrl} alt={secondImageAlt} className='secondImage'
-							onClick={() => {
-								handleImageClick(showEditButtonSecondImage, setShowEditButtonSecondImage);
-							}}
-						/>
-						{showEditButtonSecondImage && <button onClick={() => {
-							clearImage(
-								'secondImageUrl',
-								'secondImageAlt',
-								'secondImageId'
-							);
-							handleImageClick(showEditButtonSecondImage, setShowEditButtonSecondImage);
-						}} >Clear Image</button>}
-					</div>
-					:
-					<MediaPlaceholder
-						className='secondImage'
-						accept="image/"
-						labels={{ title: 'Second Image', instructions: "This is a secondary image shown less prominently in the hero" }}
-						onError={() => handleError()}
-						onSelect={(arg) => {
-							handleSelect(
-								arg,
-								'secondImageUrl',
-								'secondImageAlt',
-								'secondImageId'
-							)
-						}}
-						value={secondImageId}
-						mediaPreview={secondImageId && <img src={secondImageUrl} alt={secondImageAlt} />}
-					/>
-
-			}
+			<ImageControls
+				className='firstImage'
+				src={firstImageUrl}
+				alt={firstImageAlt}
+				id={firstImageId}
+				propNames={['firstImageUrl', 'firstImageAlt', 'firstImageId']}
+				setAttributes={setAttributes}
+				title='First Image'
+				instructions='This is the main image of the section'
+			/>
+			<ImageControls
+				className='secondImage'
+				src={secondImageUrl}
+				alt={secondImageAlt}
+				id={secondImageId}
+				propNames={['secondImageUrl', 'secondImageAlt', 'secondImageId']}
+				setAttributes={setAttributes}
+				title='Second Image'
+				instructions='This is a secondary image shown less prominently in the hero'
+			/>
 		</div>
 	);
 }
