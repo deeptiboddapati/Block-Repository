@@ -1,0 +1,49 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "toms/two-images",
+	"version": "0.1.0",
+	"title": "Two Images",
+	"category": "media",
+	"icon": "smiley",
+	"description": "Trying to add two images to one block",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"firstImageUrl": {
+			"type": "string",
+			"source": "attribute",
+			"attribute": "src",
+			"selector": ".firstImage"
+		},
+		"firstImageAlt": {
+			"type": "string",
+			"source": "attribute",
+			"attribute": "alt",
+			"selector": ".firstImage"
+		},
+		"firstImageId": {
+			"type": "number"
+		},
+		"secondImageUrl": {
+			"type": "string",
+			"source": "attribute",
+			"attribute": "src",
+			"selector": ".secondImage"
+		},
+		"secondImageAlt": {
+			"type": "string",
+			"source": "attribute",
+			"attribute": "alt",
+			"selector": ".secondImage"
+		},
+		"secondImageId": {
+			"type": "number"
+		}
+	},
+	"textdomain": "two-images",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
