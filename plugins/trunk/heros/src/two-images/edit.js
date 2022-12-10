@@ -1,6 +1,6 @@
 import { useBlockProps, MediaPlaceholder } from '@wordpress/block-editor';
 import './editor.scss';
-import { imageControls } from './image.js';
+import { ImageControls } from './image';
 import { useState } from '@wordpress/element';
 export default function Edit({ attributes, setAttributes }) {
 	const [showEditButtonFirstImage, setShowEditButtonFirstImage] = useState();
@@ -30,18 +30,20 @@ export default function Edit({ attributes, setAttributes }) {
 	const handleImageClick = (imageVar, imageSetState) => {
 		imageSetState(!imageVar);
 	}
+	console.log(
+		<ImageControls
+			className='firstImage'
+			src={firstImageUrl}
+			alt={firstImageAlt}
+			id={firstImageId}
+			propNames={['firstImageUrl', 'firstImageAlt', 'firstImageId']}
+			setAttributes={setAttributes}
+			title='First Image'
+			instructions='This is the main image of the section'
+		/>)
 	return (
 		<div {...useBlockProps()}>
-			<imageControls
-				className='firstImage'
-				src={firstImageUrl}
-				alt={firstImageAlt}
-				id={firstImageId}
-				propNames={['firstImageUrl', 'firstImageAlt', 'firstImageId']}
-				setAttributes={setAttributes}
-				title='First Image'
-				instructions='This is the main image of the section'
-			/>
+
 			{
 				secondImageId ?
 					<div>

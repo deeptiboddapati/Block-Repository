@@ -1,12 +1,18 @@
 import { MediaPlaceholder } from '@wordpress/block-editor';
 import { useState } from '@wordpress/element';
 
-export default function imageControls(props) {
-    const { className, src, alt, id, propNames, setAttributes, title, instructions } = props;
+export default function ImageControls(props) {
+    const {
+        className,
+        src,
+        alt,
+        id,
+        propNames,
+        setAttributes,
+        title,
+        instructions
+    } = props;
     const { buttonState, setButtonState } = useState();
-    const handleImageClick = () => {
-        setButtonState(!buttonState);
-    }
     const clearImage = (propUrl, propAlt, propId) => {
         var args = {}
         args[propUrl] = undefined;
@@ -27,12 +33,12 @@ export default function imageControls(props) {
                 <div>
                     <img src={src} alt={alt} className={className}
                         onClick={() => {
-                            handleImageClick();
+                            setButtonState({ buttonState: !buttonState })
                         }}
                     />
-                    {showEditButtonFirstImage && <button onClick={() => {
+                    {buttonState && <button onClick={() => {
                         clearImage(...propNames);
-                        handleImageClick();
+                        setButtonState({ buttonState: !buttonState });
                     }} >Clear Image</button>}
                 </div>
                 :
@@ -40,7 +46,7 @@ export default function imageControls(props) {
                     className={className}
                     accept="image/"
                     labels={{ title: title, instructions: instructions }}
-                    onError={() => handleError()}
+                    // onError={() => handleError()}
                     onSelect={(arg) => {
                         handleSelect(arg, ...propNames)
                     }}
