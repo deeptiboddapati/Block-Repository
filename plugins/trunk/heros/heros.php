@@ -25,5 +25,7 @@ function toms_heros_init() {
 	register_block_type( __DIR__ .'/build/hero-a' );
 	register_block_type( __DIR__ .'/build/hero-b' );
 	register_block_type( __DIR__ .'/build/two-images' );
+	register_block_type( __DIR__ .'/build/hero-starburst' );
+
 }
 add_action( 'init', 'toms_heros_init' );

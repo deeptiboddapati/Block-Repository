@@ -1,0 +1,29 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.toms-hero-starburst{
+	&-{
+		&headline{
+			&:focus{
+				border:2px solid pink;
+			}
+		}
+		&supportingcopy{
+			&:focus{
+				border:2px solid pink;
+			}			
+		}
+		&main-button{
+			&:focus{
+				border:2px solid pink;
+			}
+		}
+		&heroimage{
+			&:focus{
+				border:2px solid pink;
+			}
+		}
+	}
+}

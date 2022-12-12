@@ -1,0 +1,57 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "toms/hero-starburst",
+	"version": "0.1.0",
+	"title": "A hero that has a vibrant flat background color that extends to the top of the page below a transparent Nav bar.",
+	"category": "text",
+	"icon": "header",
+	"description": "Flat Background Under Nav",
+	"supports": {
+		"html": false,
+		"color": {
+			"background": true,
+			"text": false
+		}
+	},
+	"textdomain": "hero-starburst",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"attributes": {
+		"h1": {
+			"type": "string",
+			"source": "text",
+			"selector": ".toms-hero-starburst-headline"
+		},
+		"p": {
+			"type": "string",
+			"source": "text",
+			"selector": ".toms-hero-starburst-supportingcopy"
+		},
+		"button": {
+			"type": "string",
+			"source": "text",
+			"selector": ".toms-hero-starburst-main-button"
+		},
+		"imgUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".toms-hero-starburst--heroimage",
+			"attribute": "src"
+		},
+		"imgAlt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".toms-hero-starburst-heroimage",
+			"attribute": "alt",
+			"default": ""
+		},
+		"imgId": {
+			"type": "number"
+		},
+		"color": {
+			"type": "string"
+		}
+	}
+}

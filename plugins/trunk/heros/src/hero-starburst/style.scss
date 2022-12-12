@@ -1,0 +1,77 @@
+.toms-hero-starburst{
+	display:grid;
+	grid-template-columns: 100%;
+	grid-template-rows:auto;
+	grid-template-areas: 
+	"image"
+	"headline"
+	"supporting"
+	"button";
+	justify-items: center;
+	text-align:center;
+	width:288px;
+	align-items: end;
+	@media screen and (min-width: 768px) {
+		column-gap:40px;
+		grid-template-columns: 108px 252px ;
+		grid-template-rows: 281px 120px 96px 157px;
+		grid-template-areas:
+		"headline headline image"
+		"supporting supporting image"
+		"button button image";
+		text-align:left;
+		width:711px;
+		justify-items: start;
+	}
+	@media screen and (min-width: 1360px) {
+		grid-template-columns: 116px 116px 116px 40px 344px;
+		grid-template-rows:314px 96px 96px 148px;
+		grid-template-areas:
+		"headline headline headline space image"
+		"supporting supporting supporting space image"
+		"button button button space image";
+		width:928px;
+		margin: 0 auto;
+	}
+	&-{
+		&headline{
+			grid-area: headline;
+			width:288px;
+			@media screen and (min-width: 768px) {
+				width:320px;
+			}
+			@media screen and (min-width: 1360px) {
+				width:358px;
+			}
+		}
+		&supportingcopy{
+			grid-area:supporting;
+			width:288px;
+			@media screen and (min-width: 768px) {
+				width:320px;
+			}
+			@media screen and (min-width: 1360px) {
+				width:358px;
+			}
+		}
+		&main-button{
+			grid-area:button;
+			width: 191px;
+			white-space: nowrap;
+			border: 1px solid #FFFFFF;
+			filter: drop-shadow(0px 4px 18px rgba(0, 0, 0, 0.02));
+			border-radius: 4px;
+			@media screen and (min-width: 768px) {
+			}
+			@media screen and (min-width: 1360px) {
+			}
+		}
+		&heroimage{
+			grid-area:image;
+			@media screen and (min-width: 768px) {
+			}
+			@media screen and (min-width: 1360px) {
+			}
+		}
+	}
+}
