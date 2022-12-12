@@ -1,6 +1,5 @@
 import { MediaPlaceholder } from '@wordpress/block-editor';
 import { useState } from '@wordpress/element';
-
 export const ImageControls = (props) => {
     const {
         className,
